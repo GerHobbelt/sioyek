@@ -5,6 +5,10 @@ on:
   push:
     tags:
       - "v*"
+  pull_request:
+    branches:
+      - "*"
+
 
 jobs:
   upload-release:
@@ -13,6 +17,9 @@ jobs:
     needs: [build-mac, build-linux, build-windows, build-linux-portable, build-windows-portable]
 
     steps:
+    - name: Check context
+    - run: |
+        echo ${{ github.ref }}
     - uses: actions/checkout@v1
     - name: create release
       id: create_release
