@@ -1,4 +1,3 @@
-
 name: Build Release
 
 on:
@@ -18,8 +17,9 @@ jobs:
 
     steps:
     - name: Check context
-    - run: |
+      run: |
         echo ${{ github.ref }}
+        echo "ok"
     - uses: actions/checkout@v1
     - name: create release
       id: create_release
